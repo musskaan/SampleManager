@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "sampleManager.com/go-sampleManager-grpc;go_sampleManager_grpc";
+
+service SampleManagerService {
+    rpc AddSampleMapping (SampleMapping) returns (AddSampleMappingResponse) {}
+    rpc FetchSampleItemId (FetchSampleItemIdRequest) returns (FetchSampleItemIdResponse) {}
+}
+
+message SampleMapping {
+    repeated string clm_segments = 1;
+    string item_id = 2;
+    string sample_item_id = 3;
+}
+
+message AddSampleMappingResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message FetchSampleItemIdRequest {
+    repeated string clm_segments = 1;
+    string item_id = 2;
+}
+
+message FetchSampleItemIdResponse {
+    string sample_item_id = 1;
+}
